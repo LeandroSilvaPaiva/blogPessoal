@@ -9,25 +9,28 @@
             <div>
                 <div class="form-group">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Digit seu nome aqui">
+                    <input type="text" class="form-control" id="nome" placeholder="Digit seu nome aqui"        [(ngModel)]='user.nome'>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com">
+                    <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com"
+                    [(ngModel)]='user.usuario'>
                 </div>
                 
                 <div class="form-group">
                     <label for="senha">Senha</label>
-                    <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+                    <input type="password" class="form-control" id="senha" placeholder="Digite sua senha"
+                    (input)='conferirSenha($event)' value="{{senha}}">
                 </div>
 
                 <div class="form-group">
                     <label for="senhaConf">Confirmar Senha</label>
-                    <input type="password" class="form-control" id="senhaConf" placeholder="Digite a confirmação de senha">
+                    <input type="password" class="form-control" id="senhaConf" placeholder="Digite a confirmação de senha"
+                    [(ngModel)]='user.senha'>
                 </div>
                 <div class="d-fle justify-content-center">
-                    <div class="btn btn-outline-sucess w-25">Cadastrar</div>
+                    <button class="btn btn-outline-sucess w-25" (click)='cadastrar()'>Cadastrar</button>
                 </div>
                 
             </div>

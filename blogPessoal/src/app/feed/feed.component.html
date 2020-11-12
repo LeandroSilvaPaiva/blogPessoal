@@ -24,9 +24,9 @@
                     <div class="form-group m-0">
                         <label class="text-monospace" for="tema">Escolha um tema ou <a
                                 routerLinnk="/cadastrar-tema">Cadastre um novo</a></label>
-                        <select name="tema" id="tema" class="form-control">
-                            <option>
-                                Teste 123
+                        <select name="tema" id="tema" class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
+                            <option *ngFor='let item of listaTemas' value={{item.id}}>
+                                {{item.descricao}}
                             </option>
                         </select>
                     </div>
@@ -65,21 +65,52 @@
                             <button class="btn btn-outline-warning w-100" type="button">Pesquisar</button>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class='card mt-5' ngFor='let item of listaPostagens'>
+                                <div class='card-header'>
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-md-8">
+                                            <h5 class='card-title'>{{item.titulo}}</h5>
+                                            <small>Tema: {{item.tema.descricao}}</small>
+                                        </div>
+                                        <div class="col-md-4 justify-content-end">
+
+                                            <button class='mr-3 btn btn-outline-info'>
+                                                Editar
+                                            </button>
+
+                                            <button class='btn btn-outline-danger ml-3'>
+                                                
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class='card-body'>
+                                    <p class='card-text' aria-describedby="texto">{{item.texto}}</p>
+                                    <small id='texto' class='form-text m- text-muted mb-3 text-monospace'>Postado em {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}} </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="tab-pane fade" id="postagens-temas" role="tabpanel"
-                aria-labelledby="nav-postagens-tab">
-                <div class="row mt-3 mb-3">
-                    <div class="col-md-10 pr-0">
-                        <input class="form-control w-100" type="search" placeholder="Pesquisar postagem"
-                            aria-label="Pesquisar">
-                    </div>
-                    <div class="col-md-2 pl-0">
-                        <button class="btn btn-outline-warning w-100" type="button">Pesquisar</button>
+                <div class="tab-pane fade" id="postagens-temas" role="tabpanel" aria-labelledby="nav-postagens-tab">
+                    <div class="row mt-3 mb-3">
+                        <div class="col-md-10 pr-0">
+                            <input class="form-control w-100" type="search" placeholder="Pesquisar postagem"
+                                aria-label="Pesquisar">
+                        </div>
+                        <div class="col-md-2 pl-0">
+                            <button class="btn btn-outline-warning w-100" type="button">Pesquisar</button>
+                        </div>
                     </div>
                 </div>
-                </div>
-                
+
+
             </div>
 
         </div>
